@@ -1,0 +1,2291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Leaf It To Us — Professional landscaping services in New Providence, Summit & Union County, NJ. Lawn care, garden design, hedge trimming, leaf cleanup and more.">
+<meta name="keywords" content="landscaping New Providence NJ, lawn care Summit NJ, Union County landscaping, lawn mowing NJ, garden care New Jersey">
+<meta property="og:title" content="Leaf It To Us — Landscaping The Garden State">
+<meta property="og:description" content="Professional lawn & garden care serving New Providence, Summit & Union County, NJ.">
+<meta property="og:type" content="website">
+<title>Leaf It To Us — Landscaping The Garden State</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* =============================================
+   RESET & BASE
+============================================= */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+button { cursor: pointer; font-family: inherit; border: none; background: none; }
+
+/* =============================================
+   DESIGN TOKENS
+============================================= */
+:root {
+  --forest:    #1B3A2D;
+  --pine:      #254D3A;
+  --moss:      #3A6B52;
+  --sage:      #5E8C72;
+  --fern:      #84B59A;
+  --mist:      #C4DDD1;
+  --dew:       #E8F3ED;
+  --cream:     #F7F4EF;
+  --parchment: #EDE8DF;
+  --bark:      #8B6F47;
+  --soil:      #4A3728;
+  --white:     #FFFFFF;
+  --ink:       #1A1F1C;
+  --text:      #2D3830;
+  --muted:     #6B7D72;
+  --light-text:#9AB0A4;
+
+  --nav-h: 76px;
+  --section-pad: clamp(5rem, 10vw, 9rem);
+  --container: 1180px;
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --radius-lg: 20px;
+  --radius-xl: 32px;
+
+  --shadow-sm: 0 2px 8px rgba(27,58,45,0.08);
+  --shadow-md: 0 8px 32px rgba(27,58,45,0.12);
+  --shadow-lg: 0 20px 60px rgba(27,58,45,0.18);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+body {
+  font-family: 'Jost', sans-serif;
+  color: var(--text);
+  background: var(--white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* =============================================
+   UTILITY CLASSES
+============================================= */
+.container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
+.eyebrow {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sage);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+.eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--sage); }
+.eyebrow.light { color: var(--fern); }
+.eyebrow.light::before { background: var(--fern); }
+
+h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; line-height: 1.12; }
+h1 { font-size: clamp(3rem, 7vw, 6.5rem); font-weight: 600; }
+h2 { font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 600; }
+h3 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 500; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 36px;
+  border-radius: 60px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all 0.3s var(--ease-out);
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary {
+  background: var(--forest);
+  color: var(--white);
+  border: 2px solid var(--forest);
+}
+.btn-primary:hover { background: var(--pine); border-color: var(--pine); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(27,58,45,0.3); }
+.btn-outline {
+  background: transparent;
+  color: var(--forest);
+  border: 2px solid var(--forest);
+}
+.btn-outline:hover { background: var(--forest); color: var(--white); transform: translateY(-2px); }
+.btn-light {
+  background: var(--white);
+  color: var(--forest);
+  border: 2px solid var(--white);
+}
+.btn-light:hover { background: var(--dew); transform: translateY(-2px); }
+.btn-ghost-light {
+  background: transparent;
+  color: var(--white);
+  border: 2px solid rgba(255,255,255,0.4);
+}
+.btn-ghost-light:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.7); }
+
+.btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+/* Scroll reveal */
+.reveal { opacity: 0; transform: translateY(36px); transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* =============================================
+   NAVIGATION
+============================================= */
+#navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  transition: background 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
+}
+#navbar.scrolled {
+  background: rgba(255,255,255,0.96);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.06), 0 4px 24px rgba(27,58,45,0.08);
+  backdrop-filter: blur(12px);
+}
+.nav-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 2;
+}
+.nav-logo-mark {
+  width: 44px; height: 44px;
+  background: var(--forest);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.3s;
+}
+#navbar.scrolled .nav-logo-mark { background: var(--forest); }
+.nav-logo-mark svg { width: 22px; height: 22px; fill: var(--white); }
+.nav-logo-text { line-height: 1; }
+.nav-logo-text span:first-child {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--white);
+  transition: color 0.4s;
+}
+#navbar.scrolled .nav-logo-text span:first-child { color: var(--forest); }
+.nav-logo-text span:last-child {
+  display: block;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  transition: color 0.4s;
+}
+#navbar.scrolled .nav-logo-text span:last-child { color: var(--muted); }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+.nav-links a {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+  transition: color 0.3s;
+  position: relative;
+  padding-bottom: 3px;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 1px;
+  background: var(--fern);
+  transition: width 0.3s var(--ease-out);
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a:hover::after { width: 100%; }
+#navbar.scrolled .nav-links a { color: var(--muted); }
+#navbar.scrolled .nav-links a:hover { color: var(--forest); }
+#navbar.scrolled .nav-links a::after { background: var(--moss); }
+.nav-cta {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 11px 26px;
+  border-radius: 60px;
+  background: var(--white);
+  color: var(--forest);
+  border: 2px solid var(--white);
+  transition: all 0.3s;
+}
+.nav-cta:hover { background: var(--dew); }
+#navbar.scrolled .nav-cta { background: var(--forest); color: var(--white); border-color: var(--forest); }
+#navbar.scrolled .nav-cta:hover { background: var(--pine); }
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 6px;
+  z-index: 1002;
+}
+.nav-hamburger span {
+  display: block;
+  width: 24px; height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+#navbar.scrolled .nav-hamburger span { background: var(--forest); }
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.nav-mobile {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: var(--forest);
+  z-index: 1001;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+}
+.nav-mobile.open { display: flex; }
+.nav-mobile a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: var(--white);
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+.nav-mobile a:hover { opacity: 1; }
+.nav-mobile .mobile-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  width: 80%;
+  text-align: center;
+}
+.nav-mobile .mobile-contact span { font-size: 0.85rem; color: var(--fern); letter-spacing: 0.05em; }
+.nav-mobile .mobile-contact a { font-family: 'Jost', sans-serif; font-size: 1.1rem; color: var(--white); }
+
+/* =============================================
+   HERO
+============================================= */
+#hero {
+  min-height: 100vh;
+  background: var(--forest);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+}
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: calc(var(--nav-h) + 6rem) clamp(1.25rem, 4vw, 3rem) 6rem;
+  padding-left: clamp(1.25rem, calc((100vw - var(--container)) / 2 + 3rem), 12rem);
+  position: relative;
+  z-index: 2;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 60px;
+  padding: 7px 16px 7px 10px;
+  color: var(--mist);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  margin-bottom: 2rem;
+  width: fit-content;
+}
+.hero-badge-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--fern);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+#hero h1 {
+  color: var(--white);
+  margin-bottom: 1.5rem;
+  max-width: 600px;
+}
+#hero h1 em {
+  font-style: italic;
+  color: var(--white);
+}
+.hero-sub {
+  color: rgba(255,255,255,0.55);
+  font-size: 1rem;
+  line-height: 1.75;
+  max-width: 400px;
+  margin-bottom: 3rem;
+}
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 4rem; }
+.hero-trust {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.hero-trust-stat { }
+.hero-trust-stat strong {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1;
+}
+.hero-trust-stat span {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.05em;
+}
+.hero-trust-divider {
+  width: 1px; height: 40px;
+  background: rgba(255,255,255,0.15);
+}
+
+.hero-right {
+  position: relative;
+  overflow: hidden;
+}
+.hero-photo-grid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+}
+.hero-photo {
+  background: var(--pine);
+  overflow: hidden;
+  position: relative;
+}
+.hero-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0.75;
+  transition: opacity 0.4s, transform 0.6s;
+}
+.hero-photo:hover img { opacity: 0.9; transform: scale(1.04); }
+.hero-photo-placeholder {
+  width: 100%; height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--pine);
+  color: rgba(255,255,255,0.2);
+}
+.hero-photo-placeholder svg { width: 32px; height: 32px; opacity: 0.4; }
+.hero-photo-placeholder span { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.5; text-align: center; padding: 0 1rem; }
+.hero-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(27,58,45,0.4), transparent);
+  pointer-events: none;
+}
+/* Full overlay on left side */
+#hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 55%; height: 100%;
+  background: linear-gradient(90deg, var(--forest) 70%, transparent);
+  z-index: 1;
+  pointer-events: none;
+}
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 2.5rem;
+  right: 2.5rem;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.35);
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.scroll-line {
+  width: 1px; height: 48px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+  animation: scrollLine 1.8s ease-in-out infinite;
+}
+@keyframes scrollLine { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform: scaleY(1); transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+/* =============================================
+   INTRO STRIP
+============================================= */
+#intro-strip {
+  background: var(--cream);
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--parchment);
+}
+.intro-strip-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.strip-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.strip-icon {
+  width: 44px; height: 44px;
+  background: var(--dew);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.strip-icon svg { width: 20px; height: 20px; stroke: var(--moss); fill: none; stroke-width: 1.8; }
+.strip-text strong { display: block; font-size: 0.9rem; font-weight: 600; color: var(--forest); }
+.strip-text span { font-size: 0.8rem; color: var(--muted); }
+.strip-divider { width: 1px; height: 40px; background: var(--parchment); }
+
+/* =============================================
+   ABOUT / STORY SECTION
+============================================= */
+#about {
+  padding: var(--section-pad) 0;
+  background: var(--white);
+  overflow: hidden;
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem, 6vw, 7rem);
+  align-items: center;
+}
+.about-images {
+  position: relative;
+  height: 560px;
+}
+.about-img-main {
+  position: absolute;
+  top: 0; left: 0;
+  width: 72%; height: 78%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+.about-img-main img { width: 100%; height: 100%; object-fit: cover; }
+.about-img-accent {
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 55%; height: 55%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 6px solid var(--white);
+}
+.about-img-accent img { width: 100%; height: 100%; object-fit: cover; }
+.about-img-badge {
+  position: absolute;
+  top: 50%; left: 66%;
+  transform: translate(-50%, -50%);
+  background: var(--forest);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  z-index: 5;
+  border: 3px solid var(--white);
+}
+.about-img-badge strong {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1;
+}
+.about-img-badge span { font-size: 0.7rem; color: var(--fern); letter-spacing: 0.1em; text-transform: uppercase; }
+.photo-placeholder {
+  width: 100%; height: 100%;
+  background: var(--dew);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 10px;
+  color: var(--mist);
+  border-radius: inherit;
+}
+.photo-placeholder svg { width: 40px; height: 40px; stroke: var(--fern); fill: none; stroke-width: 1.2; }
+.photo-placeholder span { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sage); text-align: center; padding: 0 1rem; }
+.about-content {}
+.about-content h2 { margin-bottom: 1.5rem; color: var(--forest); }
+.about-content h2 em { font-style: italic; color: var(--moss); }
+.about-lead {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+.about-body {
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: var(--muted);
+  margin-bottom: 2.5rem;
+}
+.about-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+.about-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.about-feature-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--moss);
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+.about-feature span { font-size: 0.88rem; color: var(--text); line-height: 1.5; }
+
+/* =============================================
+   SERVICES
+============================================= */
+#services {
+  padding: var(--section-pad) 0;
+  background: var(--cream);
+}
+.services-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: end;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+.services-header-left h2 { color: var(--forest); }
+.services-header-left h2 em { font-style: italic; color: var(--moss); }
+.services-header-right {
+  padding-bottom: 0.5rem;
+}
+.services-header-right p {
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: var(--muted);
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5px;
+  background: var(--parchment);
+  border: 1.5px solid var(--parchment);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.service-card {
+  background: var(--white);
+  padding: 2.5rem 2rem;
+  transition: background 0.3s, transform 0.3s;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+}
+.service-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 2rem;
+  width: 0; height: 2px;
+  background: var(--moss);
+  transition: width 0.4s var(--ease-out);
+}
+.service-card:hover { background: var(--dew); }
+.service-card:hover::after { width: calc(100% - 4rem); }
+.service-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--mist);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.08em;
+}
+.service-icon-wrap {
+  width: 52px; height: 52px;
+  border-radius: var(--radius-md);
+  background: var(--dew);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.5rem;
+  transition: background 0.3s;
+}
+.service-card:hover .service-icon-wrap { background: var(--mist); }
+.service-icon-wrap svg { width: 24px; height: 24px; stroke: var(--moss); fill: none; stroke-width: 1.6; }
+.service-card h3 {
+  font-size: 1.35rem;
+  color: var(--forest);
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
+}
+.service-card p {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+/* Expandable service card */
+.service-expand-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--moss);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  transition: gap 0.2s;
+}
+.service-expand-btn:hover { gap: 10px; }
+.service-expand-btn svg {
+  width: 14px; height: 14px;
+  stroke: currentColor; fill: none; stroke-width: 2;
+  transition: transform 0.3s;
+}
+.service-card.expanded .service-expand-btn svg { transform: rotate(90deg); }
+.service-expand-detail {
+  display: none;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--parchment);
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--muted);
+}
+.service-card.expanded .service-expand-detail { display: block; }
+
+/* =============================================
+   WORK / PORTFOLIO
+============================================= */
+#work {
+  padding: var(--section-pad) 0;
+  background: var(--white);
+}
+.work-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto clamp(3rem, 6vw, 5rem);
+}
+.work-header h2 { color: var(--forest); margin-bottom: 1rem; }
+.work-header p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; }
+.work-filters {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+.filter-btn {
+  padding: 8px 20px;
+  border-radius: 60px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1.5px solid var(--parchment);
+  color: var(--muted);
+  background: var(--white);
+  transition: all 0.25s;
+  cursor: pointer;
+}
+.filter-btn:hover, .filter-btn.active { background: var(--forest); color: var(--white); border-color: var(--forest); }
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 260px;
+  gap: 1rem;
+}
+.work-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--dew);
+  cursor: pointer;
+}
+.work-item:nth-child(1) { grid-column: span 7; grid-row: span 2; }
+.work-item:nth-child(2) { grid-column: span 5; }
+.work-item:nth-child(3) { grid-column: span 5; }
+.work-item:nth-child(4) { grid-column: span 4; }
+.work-item:nth-child(5) { grid-column: span 4; }
+.work-item:nth-child(6) { grid-column: span 4; }
+.work-item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-out);
+}
+.work-item:hover img { transform: scale(1.06); }
+.work-item-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(27,58,45,0.85) 0%, rgba(27,58,45,0.1) 50%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.5rem;
+}
+.work-item:hover .work-item-overlay { opacity: 1; }
+.work-item-overlay h4 {
+  font-size: 1.15rem;
+  color: var(--white);
+  margin-bottom: 0.25rem;
+}
+.work-item-overlay span {
+  font-size: 0.78rem;
+  color: var(--fern);
+  letter-spacing: 0.06em;
+}
+.work-placeholder {
+  width: 100%; height: 100%;
+  background: var(--dew);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 12px;
+}
+.work-placeholder svg { width: 36px; height: 36px; stroke: var(--fern); fill: none; stroke-width: 1.2; }
+.work-placeholder span { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sage); text-align: center; padding: 0 1rem; }
+.work-placeholder small { font-size: 0.65rem; color: var(--light-text); }
+.work-cta {
+  text-align: center;
+  margin-top: 3rem;
+}
+.work-cta p { font-size: 0.9rem; color: var(--muted); margin-top: 1rem; }
+
+/* =============================================
+   PROCESS
+============================================= */
+#process {
+  padding: var(--section-pad) 0;
+  background: var(--forest);
+  position: relative;
+  overflow: hidden;
+}
+#process::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(90,140,114,0.15), transparent 70%);
+  pointer-events: none;
+}
+.process-header {
+  text-align: center;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+.process-header h2 { color: var(--white); margin-bottom: 1rem; }
+.process-header p { font-size: 0.95rem; color: rgba(255,255,255,0.5); max-width: 500px; margin: 0 auto; line-height: 1.8; }
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+}
+.process-steps::after {
+  content: '';
+  position: absolute;
+  top: 36px; left: calc(12.5% + 20px);
+  right: calc(12.5% + 20px);
+  height: 1px;
+  background: rgba(255,255,255,0.12);
+}
+.process-step {
+  padding: 0 1.5rem;
+  text-align: center;
+  position: relative;
+}
+.step-num-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  z-index: 2;
+}
+.step-num {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: var(--pine);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--fern);
+  transition: background 0.3s, border-color 0.3s;
+}
+.process-step:hover .step-num { background: var(--moss); border-color: var(--moss); color: var(--white); }
+.process-step h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--white); margin-bottom: 0.75rem; }
+.process-step p { font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.7; }
+
+/* =============================================
+   REVIEWS
+============================================= */
+#reviews {
+  padding: var(--section-pad) 0;
+  background: var(--cream);
+}
+.reviews-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: end;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+.reviews-header-left h2 { color: var(--forest); }
+.reviews-rating-summary {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-bottom: 0.5rem;
+}
+.rating-big {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--forest);
+  line-height: 1;
+}
+.rating-details {}
+.rating-stars { color: #D4A843; font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 4px; }
+.rating-count { font-size: 0.82rem; color: var(--muted); }
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+.review-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  border: 1px solid var(--parchment);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.review-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+.review-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+.reviewer-info { display: flex; align-items: center; gap: 12px; }
+.reviewer-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--dew);
+  border: 2px solid var(--mist);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--moss);
+  flex-shrink: 0;
+}
+.reviewer-name { font-weight: 600; font-size: 0.95rem; color: var(--forest); }
+.reviewer-loc { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+.review-stars { color: #D4A843; font-size: 0.85rem; letter-spacing: 1px; }
+.review-text {
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--text);
+  font-style: italic;
+  position: relative;
+  padding-left: 1.25rem;
+}
+.review-text::before {
+  content: '"';
+  position: absolute;
+  left: 0; top: -4px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  color: var(--mist);
+  line-height: 1;
+}
+.review-service-tag {
+  display: inline-block;
+  margin-top: 1.25rem;
+  padding: 4px 12px;
+  border-radius: 60px;
+  background: var(--dew);
+  color: var(--moss);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Review Form */
+.review-form-section {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  padding: clamp(2rem, 4vw, 3.5rem);
+  border: 1px solid var(--parchment);
+  max-width: 760px;
+  margin: 0 auto;
+}
+.review-form-section h3 {
+  color: var(--forest);
+  margin-bottom: 0.5rem;
+}
+.review-form-section > p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+.star-rating-input {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 2rem;
+}
+.star-rating-input label {
+  font-size: 2rem;
+  cursor: pointer;
+  color: #D8D0C4;
+  transition: color 0.15s, transform 0.15s;
+}
+.star-rating-input label:hover,
+.star-rating-input label.active { color: #D4A843; transform: scale(1.1); }
+.star-rating-input input { display: none; }
+.form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.form-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.form-group { margin-bottom: 1rem; }
+.form-group label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--forest);
+  margin-bottom: 8px;
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1.5px solid var(--parchment);
+  border-radius: var(--radius-md);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.92rem;
+  color: var(--text);
+  background: var(--cream);
+  transition: border-color 0.2s, background 0.2s;
+  outline: none;
+  appearance: none;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--moss);
+  background: var(--white);
+}
+.form-group textarea { height: 110px; resize: vertical; line-height: 1.6; }
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: var(--light-text); }
+.form-submit-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.form-note { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+#reviews-live {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* =============================================
+   CONTACT
+============================================= */
+#contact {
+  padding: var(--section-pad) 0;
+  background: var(--white);
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: clamp(3rem, 6vw, 7rem);
+  align-items: start;
+}
+.contact-info h2 { color: var(--forest); margin-bottom: 1.5rem; }
+.contact-info h2 em { font-style: italic; color: var(--moss); }
+.contact-info > p { font-size: 0.95rem; color: var(--muted); line-height: 1.85; margin-bottom: 2.5rem; }
+.contact-cards { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.5rem; }
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem;
+  background: var(--cream);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--parchment);
+  transition: background 0.2s;
+  text-decoration: none;
+}
+.contact-card:hover { background: var(--dew); }
+.contact-card-icon {
+  width: 44px; height: 44px;
+  border-radius: var(--radius-sm);
+  background: var(--forest);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.contact-card-icon svg { width: 20px; height: 20px; stroke: var(--white); fill: none; stroke-width: 1.8; }
+.contact-card-text strong {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 2px;
+}
+.contact-card-text span { font-size: 0.85rem; color: var(--muted); }
+.contact-social {
+  display: flex;
+  gap: 0.75rem;
+}
+.social-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 60px;
+  border: 1.5px solid var(--parchment);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--forest);
+  transition: all 0.25s;
+  text-decoration: none;
+}
+.social-btn:hover { background: var(--forest); color: var(--white); border-color: var(--forest); }
+.social-btn svg { width: 16px; height: 16px; fill: currentColor; }
+.contact-form-wrap {
+  background: var(--cream);
+  border-radius: var(--radius-xl);
+  padding: clamp(2rem, 4vw, 3.5rem);
+  border: 1px solid var(--parchment);
+}
+.contact-form-wrap h3 { color: var(--forest); margin-bottom: 0.5rem; font-size: 1.6rem; }
+.contact-form-wrap > p { font-size: 0.88rem; color: var(--muted); margin-bottom: 2rem; line-height: 1.6; }
+.form-select-wrap { position: relative; }
+.form-select-wrap::after {
+  content: '';
+  position: absolute;
+  right: 14px; top: 50%;
+  transform: translateY(-50%);
+  border: 4px solid transparent;
+  border-top-color: var(--muted);
+  pointer-events: none;
+}
+
+/* =============================================
+   CTA BANNER
+============================================= */
+#cta-banner {
+  padding: clamp(4rem, 8vw, 7rem) 0;
+  background: var(--forest);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+#cta-banner::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px; height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(90,140,114,0.12), transparent 70%);
+  pointer-events: none;
+}
+#cta-banner h2 { color: var(--white); margin-bottom: 1rem; position: relative; }
+#cta-banner h2 em { font-style: italic; color: var(--fern); }
+#cta-banner p { color: rgba(255,255,255,0.5); font-size: 1rem; margin-bottom: 2.5rem; max-width: 460px; margin-left: auto; margin-right: auto; line-height: 1.7; position: relative; }
+.cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; }
+
+/* =============================================
+   FOOTER
+============================================= */
+footer {
+  background: var(--soil);
+  padding: 5rem 0 2.5rem;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+.footer-brand h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+.footer-brand .tagline {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 1.25rem;
+}
+.footer-brand p {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.35);
+  line-height: 1.75;
+  margin-bottom: 1.5rem;
+}
+.footer-col h4 {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 1.25rem;
+}
+.footer-col ul li { margin-bottom: 0.75rem; }
+.footer-col ul li a {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.45);
+  transition: color 0.2s;
+}
+.footer-col ul li a:hover { color: var(--white); }
+.footer-col .contact-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+.footer-col .contact-line svg {
+  width: 16px; height: 16px;
+  stroke: var(--sage);
+  fill: none; stroke-width: 1.8;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.footer-col .contact-line span {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.5;
+}
+.footer-col .contact-line a {
+  color: rgba(255,255,255,0.6);
+  transition: color 0.2s;
+}
+.footer-col .contact-line a:hover { color: var(--white); }
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-bottom p {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.25);
+}
+.footer-bottom-links { display: flex; gap: 2rem; }
+.footer-bottom-links a {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.25);
+  transition: color 0.2s;
+}
+.footer-bottom-links a:hover { color: rgba(255,255,255,0.6); }
+
+/* =============================================
+   TOAST
+============================================= */
+.toast {
+  position: fixed;
+  bottom: 2rem; right: 2rem;
+  background: var(--forest);
+  color: var(--white);
+  padding: 14px 24px;
+  border-radius: 60px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  box-shadow: var(--shadow-lg);
+  z-index: 9999;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.35s var(--ease-out);
+  pointer-events: none;
+  border-left: 3px solid var(--fern);
+}
+.toast.show { transform: translateY(0); opacity: 1; }
+
+/* =============================================
+   RESPONSIVE
+============================================= */
+@media (max-width: 1024px) {
+  #hero { grid-template-columns: 1fr; }
+  #hero::before { display: none; }
+  .hero-left { padding: calc(var(--nav-h) + 4rem) clamp(1.25rem, 4vw, 3rem) 4rem; }
+  .hero-right { height: 400px; position: relative; }
+  .hero-photo-grid { position: relative; height: 100%; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .process-steps { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+  .process-steps::after { display: none; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 920px) {
+  .nav-links, .nav-cta { display: none; }
+  .nav-hamburger { display: flex; }
+}
+@media (max-width: 768px) {
+  .about-grid, .services-header, .reviews-header, .contact-grid { grid-template-columns: 1fr; }
+  .about-images { height: 320px; }
+  .about-img-main { width: 80%; height: 85%; }
+  .about-img-accent { width: 60%; height: 55%; }
+  .services-grid { grid-template-columns: 1fr; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  #reviews-live { grid-template-columns: 1fr; }
+  .work-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 200px; }
+  .work-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+  .work-item:nth-child(n) { grid-column: span 1; grid-row: span 1; }
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+  .form-grid-2 { grid-template-columns: 1fr; }
+  .form-grid-3 { grid-template-columns: 1fr; }
+  .hero-trust { flex-wrap: wrap; gap: 1rem; }
+  .hero-trust-divider { display: none; }
+  .intro-strip-inner { flex-direction: column; align-items: flex-start; }
+  .strip-divider { display: none; }
+}
+@media (max-width: 480px) {
+  .work-grid { grid-template-columns: 1fr; }
+  .work-item:nth-child(n) { grid-column: span 1; grid-row: span 1; }
+  .about-features { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- MOBILE NAV -->
+<div class="nav-mobile" id="mobileNav">
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#work" onclick="closeMobile()">Our Work</a>
+  <a href="#reviews" onclick="closeMobile()">Reviews</a>
+  <a href="#about" onclick="closeMobile()">About Us</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+  <div class="mobile-contact">
+    <span>Call or Text Anytime</span>
+    <a href="tel:9087239296">(908) 723-9296</a>
+    <a href="tel:9085911956">(908) 591-1956</a>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-wrap">
+      <a href="#" class="nav-logo">
+        <div class="nav-logo-mark">
+          <svg viewBox="0 0 24 24" fill="white"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 008 20C19 20 22 3 22 3c-1 2-8 2-8 2s-3 0-3 4c0 2 2 4 4 4s4-2 4-4V8z"/></svg>
+        </div>
+        <div class="nav-logo-text">
+          <span>Leaf It To Us</span>
+          <span>Landscaping · NJ</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#work">Our Work</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta">Get a Quote</a>
+      <div class="nav-hamburger" id="hamburger" onclick="toggleMobile()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      Now booking — New Providence &amp; Summit, NJ
+    </div>
+    <h1>Your lawn.<br><em>Our craft.</em><br>Every season.</h1>
+    <p class="hero-sub">Professional landscaping rooted in Union County. We show up, we do exceptional work, and we make your neighbors wonder who does your lawn.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-light">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+        Request a Quote
+      </a>
+      <a href="#work" class="btn btn-ghost-light">See Our Work</a>
+    </div>
+    <div class="hero-trust">
+      <div class="hero-trust-stat">
+        <strong>50+</strong>
+        <span>Happy clients</span>
+      </div>
+      <div class="hero-trust-divider"></div>
+      <div class="hero-trust-stat">
+        <strong>5★</strong>
+        <span>Average rating</span>
+      </div>
+      <div class="hero-trust-divider"></div>
+      <div class="hero-trust-stat">
+        <strong>NJ</strong>
+        <span>Union County local</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-photo-grid">
+      <div class="hero-photo">
+        <div class="work-placeholder">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>Your photo here</span>
+          <small>Lawn / Before &amp; After</small>
+        </div>
+        <div class="hero-photo-overlay"></div>
+      </div>
+      <div class="hero-photo">
+        <div class="work-placeholder">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>Your photo here</span>
+          <small>Garden / Planting</small>
+        </div>
+        <div class="hero-photo-overlay"></div>
+      </div>
+      <div class="hero-photo">
+        <div class="work-placeholder">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>Your photo here</span>
+          <small>Hedges / Trimming</small>
+        </div>
+        <div class="hero-photo-overlay"></div>
+      </div>
+      <div class="hero-photo">
+        <div class="work-placeholder">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>Your photo here</span>
+          <small>Team / At Work</small>
+        </div>
+        <div class="hero-photo-overlay"></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll-hint">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div id="intro-strip">
+  <div class="container">
+    <div class="intro-strip-inner">
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="strip-text">
+          <strong>Reliable &amp; Punctual</strong>
+          <span>We show up when we say we will</span>
+        </div>
+      </div>
+      <div class="strip-divider"></div>
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="strip-text">
+          <strong>Local &amp; Community-First</strong>
+          <span>Born and raised in NP/Summit</span>
+        </div>
+      </div>
+      <div class="strip-divider"></div>
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="strip-text">
+          <strong>Fully Insured</strong>
+          <span>Your property is protected</span>
+        </div>
+      </div>
+      <div class="strip-divider"></div>
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="strip-text">
+          <strong>Quality Guaranteed</strong>
+          <span>We don't leave until it's perfect</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-images reveal">
+        <div class="about-img-main">
+          <div class="photo-placeholder">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>Team photo or job site</span>
+          </div>
+        </div>
+        <div class="about-img-accent">
+          <div class="photo-placeholder">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>Close-up detail / equipment</span>
+          </div>
+        </div>
+        <div class="about-img-badge">
+          <strong>NJ</strong>
+          <span>Garden State</span>
+        </div>
+      </div>
+      <div class="about-content">
+        <div class="eyebrow reveal">Our Story</div>
+        <h2 class="reveal reveal-delay-1">Two guys, one mission:<br><em>lawns done right.</em></h2>
+        <p class="about-lead reveal reveal-delay-2">We started Leaf It To Us right here in New Providence — two friends from high school who saw an opportunity to build something real while doing something we're genuinely good at.</p>
+        <p class="about-body reveal reveal-delay-2">Serving the neighborhoods we grew up in means something to us. Every yard we work on is someone's home, and we treat it that way. No shortcuts, no half-effort — just honest work at a fair price from people you can actually trust.</p>
+        <div class="about-features reveal reveal-delay-3">
+          <div class="about-feature"><div class="about-feature-dot"></div><span>Locally owned &amp; operated</span></div>
+          <div class="about-feature"><div class="about-feature-dot"></div><span>Available for recurring service</span></div>
+          <div class="about-feature"><div class="about-feature-dot"></div><span>Same-day responses</span></div>
+          <div class="about-feature"><div class="about-feature-dot"></div><span>Competitive pricing</span></div>
+          <div class="about-feature"><div class="about-feature-dot"></div><span>Quality guaranteed</span></div>
+          <div class="about-feature"><div class="about-feature-dot"></div><span>Honest &amp; reliable</span></div>
+        </div>
+        <a href="#contact" class="btn btn-outline reveal reveal-delay-4">Work With Us
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="services-header">
+      <div class="services-header-left">
+        <div class="eyebrow reveal">What We Offer</div>
+        <h2 class="reveal reveal-delay-1">Full-service care,<br><em>every season.</em></h2>
+      </div>
+      <div class="services-header-right reveal reveal-delay-2">
+        <p>From spring cleanup to fall leaf removal, we handle every aspect of your lawn and property. Click any service below to learn exactly what we do.</p>
+      </div>
+    </div>
+    <div class="services-grid">
+
+      <!-- 01 Lawn Mowing & Edging -->
+      <div class="service-card reveal">
+        <div class="service-num">01</div>
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>Lawn Mowing &amp; Edging</h3>
+        <p>Clean cuts, crisp edges, and a professional finish every visit. We mow at the right height for your grass type and always edge along driveways, walkways, and beds.</p>
+        <button class="service-expand-btn" onclick="toggleService(this)">
+          Learn More
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <div class="service-expand-detail">
+          We cut your lawn to the ideal height for your specific grass type and time of season — never too short to cause stress, never too long to look unkempt. Every visit includes clean edging along all driveways, sidewalks, curb lines, and garden bed borders for crisp, defined lines. Clippings are blown off all hard surfaces before we leave. Available as a one-time cut or on a regular weekly or bi-weekly schedule.
+        </div>
+      </div>
+
+      <!-- 02 Hedge & Shrub Trimming -->
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-num">02</div>
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <h3>Hedge &amp; Shrub Trimming</h3>
+        <p>Precision shaping and trimming to keep your hedges, topiaries, and shrubs looking sculptured. We handle everything from boxwoods to privacy hedges.</p>
+        <button class="service-expand-btn" onclick="toggleService(this)">
+          Learn More
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <div class="service-expand-detail">
+          From compact boxwood borders to tall arborvitae privacy hedges, we shape and maintain any type of shrub or ornamental hedge. We use commercial-grade shears and loppers to achieve clean, even lines and remove dead or overgrown growth throughout the plant. All trimmings and debris are collected and hauled away at the end of every job, leaving your property looking sharp.
+        </div>
+      </div>
+
+      <!-- 03 Mulching & Top Dressing -->
+      <div class="service-card reveal">
+        <div class="service-num">03</div>
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+        </div>
+        <h3>Mulching &amp; Top Dressing</h3>
+        <p>Fresh mulch installation to suppress weeds, retain moisture, and give your beds a polished, finished look. We haul, spread, and clean up everything.</p>
+        <button class="service-expand-btn" onclick="toggleService(this)">
+          Learn More
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <div class="service-expand-detail">
+          We source, deliver, and install fresh mulch — shredded hardwood, cedar, or color-enhanced options available depending on your preference. Applied at the correct 2–3 inch depth, mulch suppresses weed growth, retains soil moisture, and insulates roots through temperature extremes. Service includes edging all bed borders and clearing out any old compacted material before the new mulch goes down.
+        </div>
+      </div>
+
+      <!-- 04 Leaf Cleanup & Fall Care -->
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-num">04</div>
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        </div>
+        <h3>Leaf Cleanup &amp; Fall Care</h3>
+        <p>Complete fall leaf removal, haul-away, and end-of-season cleanup. We clear your lawn, beds, and gutters so your yard is ready for whatever winter brings.</p>
+        <button class="service-expand-btn" onclick="toggleService(this)">
+          Learn More
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <div class="service-expand-detail">
+          Our fall cleanup covers your full property — lawns are blown and raked clean, all garden beds are cleared of fallen leaves and debris, and walkways are tidied up. We typically schedule multiple visits through the season as leaves continue to fall. All material is bagged and hauled off the property. Gutter clearing is available as an add-on service at the time of booking.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="work">
+  <div class="container">
+    <div class="work-header reveal">
+      <div class="eyebrow" style="justify-content:center;">Our Work</div>
+      <h2>Results that speak<br><em>for themselves.</em></h2>
+      <p>Every project below is a real yard in your neighborhood. Swap these placeholders with your own before &amp; after photos.</p>
+    </div>
+    <div class="work-filters reveal">
+      <button class="filter-btn active">All Work</button>
+      <button class="filter-btn">Lawn Care</button>
+      <button class="filter-btn">Garden Design</button>
+      <button class="filter-btn">Hedge Trimming</button>
+      <button class="filter-btn">Cleanups</button>
+    </div>
+    <div class="work-grid">
+      <div class="work-item reveal">
+        <div class="work-placeholder" style="height:100%;">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>Feature photo — best project</span>
+          <small>Recommended: 800×600px or larger</small>
+        </div>
+        <div class="work-item-overlay">
+          <h4>Full Lawn Transformation</h4>
+          <span>New Providence, NJ · Lawn Care</span>
+        </div>
+      </div>
+      <div class="work-item reveal reveal-delay-1">
+        <div class="work-placeholder" style="height:100%;">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>Garden bed photo</span>
+          <small>Before / After encouraged</small>
+        </div>
+        <div class="work-item-overlay">
+          <h4>Garden Bed Redesign</h4>
+          <span>Summit, NJ · Garden Care</span>
+        </div>
+      </div>
+      <div class="work-item reveal reveal-delay-2">
+        <div class="work-placeholder" style="height:100%;">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>Hedge trimming photo</span>
+          <small>Clean lines look great here</small>
+        </div>
+        <div class="work-item-overlay">
+          <h4>Hedge Shaping</h4>
+          <span>Berkeley Heights, NJ · Trimming</span>
+        </div>
+      </div>
+      <div class="work-item reveal">
+        <div class="work-placeholder" style="height:100%;">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>Mulch / bed work photo</span>
+        </div>
+        <div class="work-item-overlay">
+          <h4>Mulch Installation</h4>
+          <span>New Providence, NJ · Mulching</span>
+        </div>
+      </div>
+      <div class="work-item reveal reveal-delay-1">
+        <div class="work-placeholder" style="height:100%;">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>Fall cleanup photo</span>
+        </div>
+        <div class="work-item-overlay">
+          <h4>Fall Leaf Cleanup</h4>
+          <span>Summit, NJ · Cleanup</span>
+        </div>
+      </div>
+      <div class="work-item reveal reveal-delay-2">
+        <div class="work-placeholder" style="height:100%;">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>Lawn edging / detail photo</span>
+        </div>
+        <div class="work-item-overlay">
+          <h4>Precision Edging</h4>
+          <span>New Providence, NJ · Lawn Care</span>
+        </div>
+      </div>
+    </div>
+    <div class="work-cta reveal">
+      <a href="#contact" class="btn btn-primary">Start Your Transformation
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <p>Follow us on Instagram &amp; Facebook for real-time before &amp; afters</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <div class="process-header reveal">
+      <div class="eyebrow light" style="justify-content:center;">How It Works</div>
+      <h2 style="color:white;">Simple from start to <em style="color:var(--fern);">finish.</em></h2>
+      <p>Getting started with Leaf It To Us takes less than 5 minutes. Here's what happens after you reach out.</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-num-wrap"><div class="step-num">1</div></div>
+        <h4>You Reach Out</h4>
+        <p>Fill out our job request form, call, or text. Tell us about your yard and what you need — no detail is too small.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-1">
+        <div class="step-num-wrap"><div class="step-num">2</div></div>
+        <h4>We Walk the Property</h4>
+        <p>We come out, walk the property, and give you a clear, honest quote with no hidden fees — no pressure.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-2">
+        <div class="step-num-wrap"><div class="step-num">3</div></div>
+        <h4>We Get to Work</h4>
+        <p>Once you're on board, we show up on time with everything we need. You don't lift a finger.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-3">
+        <div class="step-num-wrap"><div class="step-num">4</div></div>
+        <h4>You Love It</h4>
+        <p>We don't leave until the job looks perfect. Then we schedule your next visit — or you keep our number for whenever you need us.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="container">
+    <div class="reviews-header">
+      <div class="reviews-header-left">
+        <div class="eyebrow reveal">Client Reviews</div>
+        <h2 class="reveal reveal-delay-1">What our<br>neighbors say.</h2>
+      </div>
+      <div class="reviews-rating-summary reveal reveal-delay-2">
+        <div class="rating-big">5.0</div>
+        <div class="rating-details">
+          <div class="rating-stars">★★★★★</div>
+          <div class="rating-count">Based on client reviews</div>
+        </div>
+      </div>
+    </div>
+    <div class="reviews-grid" id="initial-reviews">
+      <div class="review-card reveal">
+        <div class="review-card-top">
+          <div class="reviewer-info">
+            <div class="reviewer-avatar">JM</div>
+            <div>
+              <div class="reviewer-name">James M.</div>
+              <div class="reviewer-loc">New Providence, NJ</div>
+            </div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+        </div>
+        <p class="review-text">These guys are incredible. My lawn has never looked this good — crisp edges, perfect height, no mess left behind. They're reliable, professional, and the price is right. Highly recommend to any homeowner in the area.</p>
+        <span class="review-service-tag">Lawn Mowing</span>
+      </div>
+      <div class="review-card reveal reveal-delay-1">
+        <div class="review-card-top">
+          <div class="reviewer-info">
+            <div class="reviewer-avatar">SR</div>
+            <div>
+              <div class="reviewer-name">Sarah R.</div>
+              <div class="reviewer-loc">Summit, NJ</div>
+            </div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+        </div>
+        <p class="review-text">Super impressive for a young team running their own business. They showed up exactly when they said they would, did a thorough job, and my garden beds look better than ever. Already booked them for the season.</p>
+        <span class="review-service-tag">Garden Care</span>
+      </div>
+      <div class="review-card reveal reveal-delay-2">
+        <div class="review-card-top">
+          <div class="reviewer-info">
+            <div class="reviewer-avatar">DP</div>
+            <div>
+              <div class="reviewer-name">David P.</div>
+              <div class="reviewer-loc">Berkeley Heights, NJ</div>
+            </div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+        </div>
+        <p class="review-text">Called them for a fall cleanup and was blown away. Leaves gone, beds cleared, gutters clean — they did in 3 hours what I'd been dreading doing myself all season. Fair price, great attitude. Definitely using them again.</p>
+        <span class="review-service-tag">Fall Cleanup</span>
+      </div>
+    </div>
+    <!-- Live reviews added by JS -->
+    <div id="reviews-live"></div>
+
+    <!-- Review Submission Form -->
+    <div class="review-form-section reveal">
+      <div class="eyebrow">Share Your Experience</div>
+      <h3>Leave Us a Review</h3>
+      <p>Had a great experience? We'd love to hear about it — and so would your neighbors.</p>
+      <div>
+        <label style="font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--forest);display:block;margin-bottom:10px;">Your Rating</label>
+        <div class="star-rating-input" id="starInput">
+          <label data-val="1">★</label>
+          <label data-val="2">★</label>
+          <label data-val="3">★</label>
+          <label data-val="4">★</label>
+          <label data-val="5">★</label>
+        </div>
+      </div>
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" id="rv-name" placeholder="Jane Smith">
+        </div>
+        <div class="form-group">
+          <label>Your Town</label>
+          <input type="text" id="rv-loc" placeholder="Summit, NJ">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Service Received</label>
+        <div class="form-select-wrap">
+          <select id="rv-service">
+            <option value="">Select the service...</option>
+            <option>Lawn Mowing &amp; Edging</option>
+            <option>Hedge &amp; Shrub Trimming</option>
+            <option>Mulching</option>
+            <option>Leaf Cleanup</option>
+            <option>Multiple Services</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Your Review</label>
+        <textarea id="rv-text" placeholder="Tell others about your experience working with us..."></textarea>
+      </div>
+      <div class="form-submit-row">
+        <button class="btn btn-primary" onclick="submitReview()">Submit Review
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <p class="form-note">Your review helps other homeowners in the area find reliable lawn care.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT / JOB REQUEST -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="eyebrow reveal">Get In Touch</div>
+        <h2 class="reveal reveal-delay-1">Let's talk<br>about your <em>lawn.</em></h2>
+        <p class="reveal reveal-delay-2">Ready to get started? Have a question about a service? Fill out the job request form or reach out directly — we respond to everyone, same day.</p>
+        <div class="contact-cards reveal reveal-delay-3">
+          <a href="tel:9087239296" class="contact-card">
+            <div class="contact-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.27 9.59 19.79 19.79 0 01.21 1 2 2 0 012.22.18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.34a16 16 0 006.72 6.72l1.52-.76a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 15.46z"/></svg>
+            </div>
+            <div class="contact-card-text">
+              <strong>Main Line — (908) 723-9296</strong>
+              <span>Call or text — we respond fast</span>
+            </div>
+          </a>
+          <a href="tel:9085911956" class="contact-card">
+            <div class="contact-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.27 9.59 19.79 19.79 0 01.21 1 2 2 0 012.22.18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.34a16 16 0 006.72 6.72l1.52-.76a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 15.46z"/></svg>
+            </div>
+            <div class="contact-card-text">
+              <strong>Also Reach Us — (908) 591-1956</strong>
+              <span>Secondary line — also texts welcome</span>
+            </div>
+          </a>
+          <a href="mailto:leaf.it.to.us.np@gmail.com" class="contact-card">
+            <div class="contact-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="contact-card-text">
+              <strong>leaf.it.to.us.np@gmail.com</strong>
+              <span>Email us anytime — we check daily</span>
+            </div>
+          </a>
+        </div>
+        <div class="contact-social reveal reveal-delay-4">
+          <a href="https://www.instagram.com/leaf_it_to_us.np?igsh=aWJ1YnFiYzVoOTNq&utm_source=qr" target="_blank" rel="noopener" class="social-btn">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            Instagram
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61590708450349&mibextid=wwXIfr" target="_blank" rel="noopener" class="social-btn">
+            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            Facebook
+          </a>
+        </div>
+      </div>
+
+      <!-- JOB REQUEST FORM (Netlify Forms) -->
+      <div class="contact-form-wrap reveal reveal-delay-2">
+        <h3>Request a Quote</h3>
+        <p>Tell us about yourself and the job — we'll get back to you the same day to discuss next steps.</p>
+        <form id="jobRequestForm" name="job-request" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="job-request" />
+          <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>First Name *</label>
+              <input type="text" name="first-name" placeholder="John" required>
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" name="last-name" placeholder="Smith">
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>Email Address *</label>
+              <input type="email" name="email" placeholder="john@email.com" required>
+            </div>
+            <div class="form-group">
+              <label>Phone Number *</label>
+              <input type="tel" name="phone" placeholder="(908) 555-0000" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Street Address *</label>
+            <input type="text" name="street-address" placeholder="123 Main Street" required>
+          </div>
+          <div class="form-grid-3">
+            <div class="form-group">
+              <label>City / Town *</label>
+              <input type="text" name="city" placeholder="New Providence" required>
+            </div>
+            <div class="form-group">
+              <label>State</label>
+              <input type="text" name="state" placeholder="NJ" value="NJ">
+            </div>
+            <div class="form-group">
+              <label>ZIP Code</label>
+              <input type="text" name="zip" placeholder="07974">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Service Needed *</label>
+            <div class="form-select-wrap">
+              <select name="service" required>
+                <option value="">Select the service you need...</option>
+                <option>Lawn Mowing &amp; Edging (recurring)</option>
+                <option>Lawn Mowing &amp; Edging (one-time)</option>
+                <option>Hedge &amp; Shrub Trimming</option>
+                <option>Mulching &amp; Top Dressing</option>
+                <option>Leaf / Fall Cleanup</option>
+                <option>Full Property Maintenance</option>
+                <option>Not sure — let's talk</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>Approximate Property Size</label>
+              <div class="form-select-wrap">
+                <select name="property-size">
+                  <option value="">Select size...</option>
+                  <option>Small (under 0.25 acres)</option>
+                  <option>Medium (0.25–0.5 acres)</option>
+                  <option>Large (0.5–1 acre)</option>
+                  <option>Very Large (1+ acres)</option>
+                  <option>Not sure</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>One-Time or Recurring?</label>
+              <div class="form-select-wrap">
+                <select name="job-type">
+                  <option value="">Select...</option>
+                  <option>One-time job</option>
+                  <option>Weekly recurring</option>
+                  <option>Bi-weekly recurring</option>
+                  <option>Monthly recurring</option>
+                  <option>Seasonal (multiple visits)</option>
+                  <option>Not sure yet</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Describe the Job *</label>
+            <textarea name="job-description" placeholder="Tell us what needs to be done — current condition of the yard, specific areas to focus on, anything we should know..." required></textarea>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>Best Time to Reach You</label>
+              <div class="form-select-wrap">
+                <select name="best-time">
+                  <option value="">Select...</option>
+                  <option>Morning (8am–12pm)</option>
+                  <option>Afternoon (12pm–5pm)</option>
+                  <option>Evening (5pm–8pm)</option>
+                  <option>Anytime</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>How Did You Hear About Us?</label>
+              <div class="form-select-wrap">
+                <select name="referral-source">
+                  <option value="">Select...</option>
+                  <option>Instagram</option>
+                  <option>Facebook</option>
+                  <option>Neighbor / Word of mouth</option>
+                  <option>Google Search</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Additional Notes</label>
+            <textarea name="additional-notes" placeholder="Any other details, questions, or special requests..." style="height:80px;"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;" id="jobSubmitBtn">
+            Send Job Request
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <p style="font-size:0.78rem;color:var(--muted);margin-top:1rem;text-align:center;">We respond within a few hours — usually same day.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section id="cta-banner">
+  <div class="container">
+    <div class="eyebrow light reveal" style="justify-content:center;">Ready to start?</div>
+    <h2 class="reveal reveal-delay-1">Your best-looking lawn<br>is one call <em>away.</em></h2>
+    <p class="reveal reveal-delay-2">Reliable service. Local team. Honest pricing. Everything you need from a landscaping company, without the runaround.</p>
+    <div class="cta-btns reveal reveal-delay-3">
+      <a href="tel:9087239296" class="btn btn-light">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.27 9.59 19.79 19.79 0 01.21 1 2 2 0 012.22.18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.34a16 16 0 006.72 6.72l1.52-.76a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 15.46z"/></svg>
+        Call (908) 723-9296
+      </a>
+      <a href="#contact" class="btn btn-ghost-light">Submit a Job Request</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>Leaf It To Us</h3>
+        <p class="tagline">Landscaping · The Garden State</p>
+        <p>Professional lawn and garden care serving New Providence, Summit, and the surrounding Union County communities. Locally owned, locally invested.</p>
+        <div class="contact-social" style="margin-top:0;">
+          <a href="https://www.instagram.com/leaf_it_to_us.np?igsh=aWJ1YnFiYzVoOTNq&utm_source=qr" target="_blank" rel="noopener" class="social-btn" style="border-color:rgba(255,255,255,0.12);color:rgba(255,255,255,0.5);">
+            <svg viewBox="0 0 24 24" style="fill:rgba(255,255,255,0.5)"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            Instagram
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61590708450349&mibextid=wwXIfr" target="_blank" rel="noopener" class="social-btn" style="border-color:rgba(255,255,255,0.12);color:rgba(255,255,255,0.5);">
+            <svg viewBox="0 0 24 24" style="fill:rgba(255,255,255,0.5)"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            Facebook
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Lawn Mowing &amp; Edging</a></li>
+          <li><a href="#services">Hedge Trimming</a></li>
+          <li><a href="#services">Mulching</a></li>
+          <li><a href="#services">Leaf Cleanup</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#work">Our Work</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#process">How It Works</a></li>
+          <li><a href="#contact">Get a Quote</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="contact-line">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.27 9.59 19.79 19.79 0 01.21 1 2 2 0 012.22.18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.34a16 16 0 006.72 6.72l1.52-.76a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 15.46z"/></svg>
+          <span><a href="tel:9087239296">(908) 723-9296</a><br><a href="tel:9085911956">(908) 591-1956</a></span>
+        </div>
+        <div class="contact-line">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span><a href="mailto:leaf.it.to.us.np@gmail.com">leaf.it.to.us.np@gmail.com</a></span>
+        </div>
+        <div class="contact-line">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>New Providence &amp; Union County, NJ</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Leaf It To Us LLC. All rights reserved. Serving Union County, New Jersey.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- JAVASCRIPT -->
+<script>
+// ---- NAV SCROLL BEHAVIOR ----
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 60) navbar.classList.add('scrolled');
+  else navbar.classList.remove('scrolled');
+}, { passive: true });
+
+// ---- MOBILE NAV ----
+function toggleMobile() {
+  const ham = document.getElementById('hamburger');
+  const mob = document.getElementById('mobileNav');
+  ham.classList.toggle('open');
+  mob.classList.toggle('open');
+  document.body.style.overflow = mob.classList.contains('open') ? 'hidden' : '';
+}
+function closeMobile() {
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('mobileNav').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ---- SCROLL REVEAL ----
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+revealEls.forEach(el => observer.observe(el));
+
+// ---- FILTER BUTTONS ----
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+
+// ---- SERVICE CARD EXPAND ----
+function toggleService(btn) {
+  const card = btn.closest('.service-card');
+  const isExpanded = card.classList.contains('expanded');
+  // Close all other expanded cards
+  document.querySelectorAll('.service-card.expanded').forEach(c => c.classList.remove('expanded'));
+  if (!isExpanded) {
+    card.classList.add('expanded');
+    btn.querySelector('svg').style.transform = 'rotate(90deg)';
+  }
+  // Update all button arrow states
+  document.querySelectorAll('.service-expand-btn svg').forEach(svg => {
+    svg.style.transform = svg.closest('.service-card').classList.contains('expanded') ? 'rotate(90deg)' : '';
+  });
+}
+
+// ---- STAR RATING ----
+let selectedStars = 0;
+const starLabels = document.querySelectorAll('#starInput label');
+starLabels.forEach((lbl, idx) => {
+  lbl.addEventListener('mouseover', () => {
+    starLabels.forEach((l, i) => l.classList.toggle('active', i <= idx));
+  });
+  lbl.addEventListener('mouseout', () => {
+    starLabels.forEach((l, i) => l.classList.toggle('active', i < selectedStars));
+  });
+  lbl.addEventListener('click', () => {
+    selectedStars = idx + 1;
+    starLabels.forEach((l, i) => l.classList.toggle('active', i < selectedStars));
+  });
+});
+
+// ---- TOAST ----
+function showToast(msg, success = true) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.borderLeftColor = success ? 'var(--fern)' : '#e07070';
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 4000);
+}
+
+// ---- REVIEW SUBMISSION ----
+function submitReview() {
+  const name = document.getElementById('rv-name').value.trim();
+  const loc  = document.getElementById('rv-loc').value.trim();
+  const svc  = document.getElementById('rv-service').value;
+  const text = document.getElementById('rv-text').value.trim();
+  if (!name || !text || selectedStars === 0) {
+    showToast('Please fill in your name, review, and rating.', false);
+    return;
+  }
+  const initials = name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
+  const starsHtml = '★'.repeat(selectedStars) + '☆'.repeat(5 - selectedStars);
+  const container = document.getElementById('reviews-live');
+  if (container.children.length === 0) {
+    container.style.cssText = 'display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:1.5rem;';
+  }
+  const card = document.createElement('div');
+  card.className = 'review-card';
+  card.style.cssText = 'opacity:0;transform:translateY(20px);transition:all 0.5s;';
+  card.innerHTML = `
+    <div class="review-card-top">
+      <div class="reviewer-info">
+        <div class="reviewer-avatar">${initials}</div>
+        <div>
+          <div class="reviewer-name">${name}</div>
+          <div class="reviewer-loc">${loc || 'Union County, NJ'}</div>
+        </div>
+      </div>
+      <div class="review-stars" style="color:#D4A843;">${starsHtml}</div>
+    </div>
+    <p class="review-text">${text}</p>
+    ${svc ? `<span class="review-service-tag">${svc}</span>` : ''}
+  `;
+  container.appendChild(card);
+  setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'translateY(0)'; }, 50);
+  ['rv-name','rv-loc','rv-service','rv-text'].forEach(id => document.getElementById(id).value = '');
+  selectedStars = 0;
+  starLabels.forEach(l => l.classList.remove('active'));
+  showToast('Thank you! Your review has been posted.');
+  card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+// ---- JOB REQUEST FORM (Netlify Forms AJAX) ----
+const jobForm = document.getElementById('jobRequestForm');
+jobForm.addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('jobSubmitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+
+  const fname = jobForm.querySelector('[name="first-name"]').value.trim();
+
+  try {
+    const response = await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(jobForm)).toString()
+    });
+
+    if (response.ok) {
+      showToast(`Thanks, ${fname}! We'll be in touch very soon.`);
+      jobForm.reset();
+    } else {
+      showToast('Something went wrong. Please call or text us directly.', false);
+    }
+  } catch (err) {
+    showToast('Something went wrong. Please call or text us directly.', false);
+  }
+
+  btn.disabled = false;
+  btn.innerHTML = 'Send Job Request <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+});
+
+// ---- SMOOTH SCROLL ----
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const href = a.getAttribute('href');
+    if (href === '#') return;
+    const target = document.querySelector(href);
+    if (target) {
+      e.preventDefault();
+      const offset = target.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top: offset, behavior: 'smooth' });
+    }
+  });
+});
+</script>
+</body>
+</html>
